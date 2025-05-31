@@ -1,0 +1,21 @@
+<?php
+
+return [
+    'required' => ':attribute は必ず指定してください。',
+    'numeric' => ':attribute には数値を指定してください。',
+    'string' => ':attribute は文字列である必要があります。',
+    'max' => [
+        'string' => ':attribute は :max 文字以内で指定してください。',
+    ],
+    'min' => [
+        'string' => ':attribute は :min 文字以上で指定してください。',
+    ],
+    'attributes' => [
+        'product_code' => '製品番号',
+        'name' => '製品名',
+        'quantity' => '数量',
+        'price' => '価格',
+    ],
+];
+
+

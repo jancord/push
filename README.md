@@ -1,54 +1,58 @@
 # 製品管理アプリ
 
-Laravelで作成した在庫管理アプリケーションです。製品の登録・編集・削除・一覧表示が可能です。
+## アプリケーションを作成した背景
+在庫管理を紙やExcelで行っている現場が多く、ミスや手間がかかると感じていました。  
+Laravelを使って簡単に在庫を管理できるWebアプリを作りたいと思い、本アプリを作成しました。
 
----
-
-## アプリ概要
-
-製品番号・製品名・数量・価格を管理するシンプルな CRUD 機能付きの在庫管理ツールです。
-
----
+## アプリケーション概要
+製品番号・製品名・数量・価格を登録し、編集・削除・一覧表示ができるシンプルなCRUDアプリです。  
+Bootstrapを用いたデザイン、バリデーションエラー表示、フラッシュメッセージにも対応しています。
 
 ## URL
+※デプロイしていればURLを記載  
+例：`https://your-app-name.onrender.com`
 
-（例）https://your-app-name.onrender.com  
-※デプロイしていない場合は空欄でもOK
+## テスト用アカウント
+- メールアドレス: `test@example.com`  
+- パスワード: `password`
 
----
+## 利用方法
+1. トップページから「製品登録」をクリック  
+2. 必要な情報（製品番号、製品名、数量、価格）を入力して登録  
+3. 一覧ページから編集・削除が可能  
 
-## 使用方法
+## トップページのスクリーンショット
+※画像がある場合：  
+`![スクリーンショット](public/images/screenshot.png)`
 
-1. 「製品登録」から新しい製品を追加
-2. 一覧ページで製品情報を確認
-3. 編集・削除ボタンから更新または削除
+## 開発環境
+- macOS 15.5
+- Visual Studio Code
 
----
+## 使用技術
+- Laravel 12.x
+- PHP 8.4.x
+- MySQL
+- Bootstrap 5
 
-## テスト用アカウント（任意）
-
-- メールアドレス: test@example.com  
-- パスワード: password
-
----
-
-## 開発環境・使用技術
-
-- Laravel 12.x  
-- PHP 8.4.x  
-- MySQL  
-- Bootstrap 5  
-- Visual Studio Code  
-
----
-
-## ローカル環境での実行方法
+## ローカルでの動作方法
 
 ```bash
-git clone https://github.com/ユーザー名/リポジトリ名.git
-cd リポジトリ名
+git clone https://github.com/jancord/push.git
+cd push
 cp .env.example .env
-php artisan key:generate
 composer install
+php artisan key:generate
 php artisan migrate
 php artisan serve
+
+## 工夫したポイント
+- バリデーションエラーや登録成功時のフラッシュメッセージを明示的に表示  
+- 製品番号による並び替え  
+- Bootstrap による見やすくシンプルなUI設計  
+
+## 実装予定の機能
+- 日本語バリデーションメッセージの追加  
+- ログインユーザーごとのデータ管理（マルチユーザー化）  
+- 検索・絞り込み機能の追加  
+- デザインの微調整（余白・カラー・見出しなど）

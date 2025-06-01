@@ -5,6 +5,9 @@ RUN apt-get update && apt-get install -y \
     zip unzip git curl libzip-dev libpng-dev libjpeg-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql zip bcmath
 
+# Composer（Laravelに必須）をインストール
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
 # Apache の mod_rewrite を有効に
 RUN a2enmod rewrite
 
@@ -31,5 +34,6 @@ EXPOSE 80
 
 # Laravel 起動スクリプトを実行
 CMD ["start.sh"]
+
 
 

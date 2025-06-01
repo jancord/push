@@ -1,30 +1,30 @@
 FROM php:8.2-apache
 
-# パッケージインストール
+# 必要な PHP 拡張をインストール（← bcmath を追加！）
 RUN apt-get update && apt-get install -y \
-    unzip zip git curl libzip-dev libonig-dev libxml2-dev libpng-dev libjpeg-dev \
-    && docker-php-ext-install pdo pdo_mysql zip
+    zip unzip git curl libzip-dev libpng-dev libjpeg-dev libonig-dev libxml2-dev \
+    && docker-php-ext-install pdo pdo_mysql zip bcmath
 
-# Apacheのmod_rewrite有効化
+# Apache の mod_rewrite を有効に
 RUN a2enmod rewrite
 
-# Composerインストール
-RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
-
-# Laravelのpublicをドキュメントルートに設定
+# Laravel のドキュメントルートを public に設定
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/000-default.conf
 
-# 作業ディレクトリ
+# 作業ディレクトリを設定
 WORKDIR /var/www/html
 
-# アプリのコードをコピー
+# アプリケーションのソースをコピー
 COPY . .
 
 # 権限設定
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# start.sh 経由で起動
+# ポート開放
+EXPOSE 80
+
+# 起動スクリプトを実行
 CMD ["./start.sh"]
 

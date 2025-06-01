@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# 必要な PHP 拡張をインストール（← bcmath を追加！）
+# 必要な PHP 拡張をインストール（bcmath 含む）
 RUN apt-get update && apt-get install -y \
     zip unzip git curl libzip-dev libpng-dev libjpeg-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_mysql zip bcmath
@@ -22,9 +22,14 @@ COPY . .
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+# 起動スクリプトをコピーして実行可能に
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
 # ポート開放
 EXPOSE 80
 
-# 起動スクリプトを実行
-CMD ["./start.sh"]
+# Laravel 起動スクリプトを実行
+CMD ["start.sh"]
+
 

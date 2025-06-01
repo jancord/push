@@ -1,35 +1,13 @@
 services:
   - type: web
     name: zaiko-app
-    runtime: docker
-    region: singapore
+    env: docker
     plan: free
-    envVars:
-      - key: APP_ENV
-        value: production
-      - key: APP_KEY
-        generateValue: true
-      - key: DB_CONNECTION
-        value: mysql
-      - key: DB_HOST
-        fromDatabase:
-          name: zaiko-db
-          property: host
-      - key: DB_DATABASE
-        fromDatabase:
-          name: zaiko-db
-          property: database
-      - key: DB_USERNAME
-        fromDatabase:
-          name: zaiko-db
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: zaiko-db
-          property: password
-
-databases:
-  - name: zaiko-db
     region: singapore
-    plan: free
+    branch: main
+    buildFilter:
+      paths:
+        - Dockerfile
+        - start.sh
+    repo: https://github.com/jancord/push
 

@@ -46,6 +46,7 @@ php artisan key:generate
 php artisan migrate
 php artisan serve
 
+
 ## 工夫したポイント
 - バリデーションエラーや登録成功時のフラッシュメッセージを明示的に表示  
 - 製品番号による並び替え  
@@ -56,3 +57,4 @@ php artisan serve
 - ログインユーザーごとのデータ管理（マルチユーザー化）  
 - 検索・絞り込み機能の追加  
 - デザインの微調整（余白・カラー・見出しなど）
+

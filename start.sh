@@ -1,16 +1,15 @@
 #!/bin/bash
 
-# Composer で依存関係をインストール
+# ComposerでLaravelの必要なパッケージをインストール
 composer install --no-dev --optimize-autoloader
 
-# Laravel キャッシュクリア
+# Laravelのキャッシュをクリア＆再生成
 php artisan config:clear
-php artisan route:clear
-php artisan view:clear
+php artisan config:cache
 
-# マイグレーション実行（DB構築）
+# データベースのテーブルを作る（マイグレーション）
 php artisan migrate --force
 
-# Apache 起動
+# Apacheサーバーを起動する
 apache2-foreground
 

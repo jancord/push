@@ -29,32 +29,28 @@ Bootstrapを用いたデザイン、バリデーションエラー表示、フ�
 - macOS 15.5
 - Visual Studio Code
 
-## 使用技術
-- Laravel 12.x
-- PHP 8.4.x
-- MySQL
-- Bootstrap 5
+## 使用技術  
+・Laravel 12.x  
+・PHP 8.4.x  
+・MySQL  
+・Bootstrap 5  
 
-## ローカルでの動作方法
+## ローカルでの動作方法  
+git clone https://github.com/jancord/push.git  
+cd push  
+cp .env.example .env  
+composer install  
+php artisan key:generate  
+php artisan migrate  
+php artisan serve  
 
-```bash
-git clone https://github.com/jancord/push.git
-cd push
-cp .env.example .env
-composer install
-php artisan key:generate
-php artisan migrate
-php artisan serve
+## 工夫したポイント  
+・バリデーションエラーや登録成功時のフラッシュメッセージを明示的に表示  
+・製品番号による並び替え  
+・Bootstrap による見やすくシンプルなUI設計  
 
-
-## 工夫したポイント
-- バリデーションエラーや登録成功時のフラッシュメッセージを明示的に表示  
-- 製品番号による並び替え  
-- Bootstrap による見やすくシンプルなUI設計  
-
-## 実装予定の機能
-- 日本語バリデーションメッセージの追加  
-- ログインユーザーごとのデータ管理（マルチユーザー化）  
-- 検索・絞り込み機能の追加  
-- デザインの微調整（余白・カラー・見出しなど）
-
+## 実装予定の機能  
+・日本語バリデーションメッセージの追加  
+・ログインユーザーごとのデータ管理（マルチユーザー化）  
+・検索・絞り込み機能の追加  
+・デザインの微調整（余白・カラー・見出しなど）  

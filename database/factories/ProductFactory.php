@@ -10,9 +10,9 @@ class ProductFactory extends Factory
     {
         return [
             'product_code' => 'P' . $this->faker->unique()->numerify('#####'),
-            'product_name' => $this->faker->word(),
-            'quantity' => $this->faker->numberBetween(1, 100),
-            'price' => $this->faker->numberBetween(100, 10000),
+            'name'         => $this->faker->word(),
+            'quantity'     => $this->faker->numberBetween(1, 100),
+            'price'        => $this->faker->numberBetween(100, 10000),
         ];
     }
 }
